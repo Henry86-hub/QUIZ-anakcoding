@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Seberapa Programmer Kamu?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="app-wrapper">
+<br>
+    <nav class="navbar">
+      <div class="nav-left">
+        <img src="assets/ikondino.jpg" class="nav-logo">
+        <span class="nav-title">Coding Quiz</span>
+        <span id="usernameNav">Guest</span>
+      </div>
+
+      <div class="nav-right">
+        <button class="nav-btn" onclick="playClick(); goHome()">Home</button>
+        <div class="option-wrapper">
+          <button class="nav-btn" onclick="playClick(); toggleOption()">Option ⚙</button>
+          <div id="optionMenu" class="option-menu">
+            <button onclick="toggleMusic()">
+                🎵 Music: <span id="musicStatus">OFF</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav><br>
+
+    <div class="container">
+        
+        <img src="assets/ikondino.jpg" class="logo">
+
+        <h1 id="title">Seberapa Programmer Kamu?</h1>
+
+        <div id="start-screen">
+            <p>Masukkan nama kamu:</p>
+            <input type="text" id="username" placeholder="Masukan Namamu">
+            <button onclick="playClick(); handleStart()">Mulai Tes</button>
+        </div>
+
+        <div id="quiz-screen" style="display:none;">
+            <div class="progress-wrapper">
+                <div id="progress-bar"></div>
+            </div>
+            <p id="question"></p>
+            <div id="options"></div>
+        </div>
+
+        <div id="result-screen" style="display:none;">
+            <img id="badge" src="" alt="Badge" style="width:120px; margin:15px 0;">
+            <h2 id="result-title"></h2>
+            <p id="result-desc"></p>
+            <button onclick="repeatQuiz()">Ulangi Tes</button>
+
+        </div><br>
+        <footer>
+        Developed by <strong>Hendry</strong>
+        </footer>
+
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

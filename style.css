@@ -1,0 +1,275 @@
+* {
+  box-sizing: border-box;
+  font-family: "Courier New", monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+
+  /* BACKGROUND GAMBAR DARI LAPTOP */
+  background-image: url("assets/dino.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 30px;
+  width: 360px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.logo {
+  width: 90px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+p {
+  font-size: 14px;
+  color: #444;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border: 2px solid #333;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #333;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #000;
+}
+#options button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+
+  background: #fff;
+  border: 2px solid #333;
+  color: #333;              /* INI KUNCI */
+  font-size: 14px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#options button:hover {
+  background: #333;
+  color: #fff;
+}
+#options button:active {
+  background: #555;
+  color: white;
+}
+.progress-wrapper {
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #333, #555);
+  transition: width 0.4s ease;
+}
+
+/* Smooth transition global */
+* {
+  transition: all 0.25s ease;
+}
+
+/* Animasi fade untuk soal */
+#question {
+  animation: fadeIn 0.4s ease;
+}
+
+/* Animasi opsi jawaban */
+#options button {
+  animation: slideUp 0.3s ease;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#badge {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+/* animasi badge */
+@keyframes badgePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  height: 56px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 16px;
+  box-sizing: border-box;
+
+  background: #f7f7f7;
+  border: 2px solid #333;
+  border-radius: 8px;
+
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* KIRI */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo {
+  width: 26px;
+  height: 26px;
+}
+
+.nav-title {
+  font-size: 10px;
+}
+
+/* KANAN */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* BUTTON */
+.nav-btn {
+  height: 34px;
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: #000;                 /* 🔥 INI PENTING */
+
+  background: #fff;
+  border: 2px solid #000;
+  cursor: pointer;
+
+  /* pixel feel */
+  box-shadow:
+    2px 2px 0 #000;
+}
+.nav-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* OPTION */
+.option-wrapper {
+  position: relative;
+}
+
+.option-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+
+  width: 170px;
+  padding: 6px;
+
+  background: white;
+  border: 2px solid #333;
+  border-radius: 6px;
+
+  display: none;
+  z-index: 10;
+}
+
+.option-menu button {
+  width: 100%;
+  padding: 8px;
+
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: #000;              /* 🔥 WAJIB */
+
+  background: #fff;
+  border: 2px solid #000;
+  margin-bottom: 6px;
+
+  box-shadow: 2px 2px 0 #000;
+}
+
+.option-menu button:last-child {
+  margin-bottom: 0;
+}
+
+.option-menu button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
