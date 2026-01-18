@@ -1,14 +1,24 @@
-* {
-  box-sizing: border-box;
-  font-family: "Courier New", monospace;
+:root {
+  --bg-overlay: rgba(255,255,255,0.92);
+  --fg: #333;
+  --fg-strong: #000;
+  --accent-dark: #555;
+  --muted: #ddd;
+  --white: #fff;
+  --shadow: rgba(0,0,0,0.15);
+  --radius: 8px;
 }
 
+/* Box sizing site-wide */
+* {
+  box-sizing: border-box;
+}
+
+/* Base */
 body {
   margin: 0;
   padding: 0;
-  font-family: monospace;
-
-  /* BACKGROUND GAMBAR DARI LAPTOP */
+  font-family: "Courier New", monospace;
   background-image: url("assets/dino.jpg");
   background-size: cover;
   background-position: center;
@@ -20,12 +30,12 @@ body {
 }
 
 .container {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--bg-overlay);
   padding: 30px;
   width: 360px;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px var(--shadow);
 }
 
 .logo {
@@ -43,54 +53,63 @@ p {
   color: #444;
 }
 
+/* Inputs & buttons — transitions only for needed properties */
 input {
   width: 100%;
   padding: 10px;
   margin: 15px 0;
-  border: 2px solid #333;
+  border: 2px solid var(--fg);
   border-radius: 5px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
+/* Primary button */
 button {
   width: 100%;
   padding: 10px;
   border: none;
-  background: #333;
-  color: white;
+  background: var(--fg);
+  color: var(--white);
   font-size: 16px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background-color 0.2s ease, transform 0.12s ease;
 }
 
 button:hover {
-  background: #000;
+  background: var(--fg-strong);
 }
+
+/* OPTIONS — merged rules, optimized transitions */
 #options button {
   width: 100%;
   margin: 8px 0;
   padding: 10px;
 
-  background: #fff;
-  border: 2px solid #333;
-  color: #333;              /* INI KUNCI */
+  background: var(--white);
+  border: 2px solid var(--fg);
+  color: var(--fg);
   font-size: 14px;
 
   cursor: pointer;
-  transition: 0.2s;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.12s ease;
+  will-change: transform, opacity;
 }
 
 #options button:hover {
-  background: #333;
-  color: #fff;
+  background: var(--fg);
+  color: var(--white);
 }
+
 #options button:active {
-  background: #555;
-  color: white;
+  background: var(--accent-dark);
+  color: var(--white);
 }
+
+/* Progress bar — use transform for better perf */
 .progress-wrapper {
   width: 100%;
   height: 8px;
-  background: #ddd;
+  background: var(--muted);
   border-radius: 10px;
   margin-bottom: 15px;
   overflow: hidden;
@@ -98,22 +117,18 @@ button:hover {
 
 #progress-bar {
   height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #333, #555);
-  transition: width 0.4s ease;
+  width: 100%; /* full width, animate with scaleX */
+  transform-origin: left center;
+  transform: scaleX(0); /* set via JS: scaleX(percent/100) */
+  background: linear-gradient(90deg, var(--fg), var(--accent-dark));
+  transition: transform 0.4s ease;
 }
 
-/* Smooth transition global */
-* {
-  transition: all 0.25s ease;
-}
-
-/* Animasi fade untuk soal */
+/* Animations — still hardware friendly (transform/opacity) */
 #question {
   animation: fadeIn 0.4s ease;
 }
 
-/* Animasi opsi jawaban */
 #options button {
   animation: slideUp 0.3s ease;
 }
@@ -140,6 +155,8 @@ button:hover {
     transform: translateY(0);
   }
 }
+
+/* Badge initial state */
 #badge {
   opacity: 0;
   transform: scale(0.5);
@@ -171,11 +188,10 @@ button:hover {
   align-items: center;
 
   padding: 0 16px;
-  box-sizing: border-box;
 
   background: #f7f7f7;
-  border: 2px solid #333;
-  border-radius: 8px;
+  border: 2px solid var(--fg);
+  border-radius: var(--radius);
 
   font-family: 'Press Start 2P', monospace;
 }
@@ -214,22 +230,22 @@ button:hover {
 
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
-  color: #000;                 /* 🔥 INI PENTING */
+  color: var(--fg-strong);
 
-  background: #fff;
-  border: 2px solid #000;
+  background: var(--white);
+  border: 2px solid var(--fg-strong);
   cursor: pointer;
 
   /* pixel feel */
-  box-shadow:
-    2px 2px 0 #000;
+  box-shadow: 2px 2px 0 var(--fg-strong);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 .nav-btn:hover {
   transform: translate(2px, 2px);
   box-shadow: none;
 }
 
-/* OPTION */
+/* OPTION menu */
 .option-wrapper {
   position: relative;
 }
@@ -242,8 +258,8 @@ button:hover {
   width: 170px;
   padding: 6px;
 
-  background: white;
-  border: 2px solid #333;
+  background: var(--white);
+  border: 2px solid var(--fg);
   border-radius: 6px;
 
   display: none;
@@ -256,13 +272,14 @@ button:hover {
 
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
-  color: #000;              /* 🔥 WAJIB */
+  color: var(--fg-strong);
 
-  background: #fff;
-  border: 2px solid #000;
+  background: var(--white);
+  border: 2px solid var(--fg-strong);
   margin-bottom: 6px;
 
-  box-shadow: 2px 2px 0 #000;
+  box-shadow: 2px 2px 0 var(--fg-strong);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .option-menu button:last-child {
@@ -272,4 +289,15 @@ button:hover {
 .option-menu button:hover {
   transform: translate(2px, 2px);
   box-shadow: none;
+}
+
+/* Respect user pref for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  #progress-bar {
+    transition: none;
+  }
 }
